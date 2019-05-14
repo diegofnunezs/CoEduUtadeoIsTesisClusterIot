@@ -12,7 +12,8 @@ def read_temperature():
   if temperature:
     print('Temperature')
     temp = temperature
-    print ('{0:0.1f} ℃'.format(temperature))
+    print ('{0:0.1f} ℃'.format(temperature)
+)
   else:
     print('Error')
 
@@ -63,3 +64,5 @@ if __name__ == '__main__':
         time.sleep(5)
         movement = read_movement()
         time.sleep(5)
+
+

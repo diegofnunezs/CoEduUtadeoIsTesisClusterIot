@@ -9,5 +9,3 @@ while True:
     print ('Darkness') 
   else:
    print ('Light')
-
-

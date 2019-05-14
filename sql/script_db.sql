@@ -9,8 +9,7 @@ CREATE TABLE raw_sensor_data (
         time TIME NOT NULL ,
         sensor_id INTEGER NOT NULL ,
         value INTEGER NOT NULL ,
-        FOREIGN KEY (node_id) REFERENCES node_metadata(node_id),
-        PRIMARY KEY (node_id)
+        FOREIGN KEY (node_id) REFERENCES node_metadata(node_id)
 );
 CREATE TABLE network_metadata (
         sense_interval INTEGER NOT NULL 
@@ -29,8 +28,7 @@ CREATE TABLE node_sensor (
         sensor_id  NOT NULL ,
         node_pin INTEGER NOT NULL ,
         data_position INTEGER, 
-        FOREIGN KEY (node_id) REFERENCES node_metadata(node_id),
-        PRIMARY KEY(node_id,sensor_id)
+        FOREIGN KEY (node_id) REFERENCES node_metadata(node_id)
 );
 
 
