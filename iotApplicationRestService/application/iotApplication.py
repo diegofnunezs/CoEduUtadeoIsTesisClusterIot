@@ -1,14 +1,15 @@
 import controller
 from model import RawSensorData
+import Adafruit_DHT
 
 def do_read_temperature(node_pin):
 	sensor=Adafruit_DHT.DHT11
-    gpio=node_pin
-    humidity, temperature = Adafruit_DHT.read_retry(sensor, gpio)
-    if temperature is not None:
-        return '{0:0.1f}'.format(temperature)
-    else:
-        return None
+	gpio=node_pin
+	humidity, temperature = Adafruit_DHT.read_retry(sensor, gpio)
+	if temperature is not None:
+		return '{0:0.1f}'.format(temperature)
+	else:
+		return None
 	#return node_pin
 
 def do_read_humidity(node_pin):
