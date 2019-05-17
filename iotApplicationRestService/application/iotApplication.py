@@ -23,9 +23,9 @@ def do_read_light(node_pin):
 
 def sensor_read(sensor, node_pin):
 	switcher = {
-		1:do_read_temperature(node_pin),
-		2:do_read_humidity(node_pin),
-		3:do_read_movement(node_pin),
+		1:do_read_movement(node_pin),
+		2:do_read_temperature(node_pin),
+		3:do_read_humidity(node_pin),
 		4:do_read_light(node_pin)
 	}
 	function = switcher.get(sensor, "nothing")
