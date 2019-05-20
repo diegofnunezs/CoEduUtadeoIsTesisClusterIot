@@ -45,5 +45,5 @@ CREATE TABLE raw_sensor_data (
                 time,
                 sensor_id
         ), 
-        FOREIGN KEY (node_id, sensor_id) REFERENCES node_sensor (node_id, sensor_id),
+        FOREIGN KEY (node_id, sensor_id) REFERENCES node_sensor (node_id, sensor_id)
 );
