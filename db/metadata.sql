@@ -1,4 +1,4 @@
-INSERT INTO network_metadata (sense_interval) VALUES (600);
+INSERT INTO network_metadata (sense_time) VALUES (600);
 
 INSERT INTO node_metadata (node_id, location) VALUES (1, 'Study');
 INSERT INTO node_metadata (node_id, location) VALUES (2, 'Living Room');
