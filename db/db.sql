@@ -39,11 +39,11 @@ CREATE TABLE raw_sensor_data (
         node_id INTEGER NOT NULL ,
         time DATETIME NOT NULL ,
         sensor_id INTEGER NOT NULL ,
-        value DOUBLE NOT NULL , 
+        value DOUBLE NOT NULL ,
         PRIMARY KEY (
                 node_id,
                 time,
                 sensor_id
         ),
-        FOREIGN KEY (node_id, sensor_id) REFERENCES node_sensor (node_id, sensor_id),
+        FOREIGN KEY (node_id, sensor_id) REFERENCES node_sensor (node_id, sensor_id)
 );
