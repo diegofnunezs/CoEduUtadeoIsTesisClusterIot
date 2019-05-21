@@ -1,51 +1,47 @@
-import controller
+import controller, service, datetime
+from time import sleep
+from datetime import timedelta
 from model import RawSensorData
-import Adafruit_DHT
-
-def do_read_temperature(node_pin):
-	sensor=Adafruit_DHT.DHT11
-	gpio=node_pin
-	humidity, temperature = Adafruit_DHT.read_retry(sensor, gpio)
-	if temperature is not None:
-		return '{0:0.1f}'.format(temperature)
-	else:
-		return None
-	#return node_pin
-
-def do_read_humidity(node_pin):
-	return "humidity"
-
-def do_read_movement(node_pin):
-	return "movement"
-
-def do_read_light(node_pin):
-	return "light"
 
 def sensor_read(sensor, node_pin):
 	switcher = {
-		1:do_read_movement(node_pin),
-		2:do_read_temperature(node_pin),
-		3:do_read_humidity(node_pin),
-		4:do_read_light(node_pin)
+		1:service.do_read_movement(node_pin),
+		2:service.do_read_temperature(node_pin),
+		3:service.do_read_humidity(node_pin),
+		4:service.do_read_light(node_pin)
 	}
-	function = switcher.get(sensor, "nothing")
+	function = switcher.get(sensor, None)
 	return function
 
 if __name__ == '__main__':
+	isStart = False
+	senseTime = 0
+	nodeId = 0
+	nowDate = None
+
 	senseTimeRow = controller.get_sense_time()
+
 	for senseTime in senseTimeRow:
-		print(senseTime["sense_time"])
-	node_id = 0
+		senseTime = senseTime["sense_time"]
 
 	nodeRow = controller.get_node()
 	for node in nodeRow:
-		node_id = node["node_id"]
+		nodeId = node["node_id"]
 
-	nodeSensorRow = controller.get_node_sensors(node_id)
-	for nodeSensor in nodeSensorRow:
-		print('NodeSensor {0} {1} {2} {3} '.format(nodeSensor["node_id"],nodeSensor["sensor_id"],nodeSensor["node_pin"],nodeSensor["data_position"]))
-		print(sensor_read(nodeSensor["sensor_id"], nodeSensor["node_pin"]))
+	while True:
+		if isStat:
+			sleep(senseTime)
+		else:
+			isStat = True
 
-	#rawSensorData = RawSensorData(node_id=node_id, sensor_id=1, value=20)
+		if nowDate is not None:
+			nowDate += timedelta(seconds=senseTime)
+		else:
+			nowDate = datetime.datetime.now()
 
-	#controller.do_create_sensor_data(rawSensorData)
+		nodeSensorRow = controller.get_node_sensors(node_id)
+		for nodeSensor in nodeSensorRow:
+			#print('NodeSensor {0} {1} {2} {3} '.format(nodeSensor["node_id"],nodeSensor["sensor_id"],nodeSensor["node_pin"],nodeSensor["data_position"]))
+			sensorValue = sensor_read(nodeSensor["sensor_id"], nodeSensor["node_pin"])
+			rawSensorData = RawSensorData(node_id=nodeId, sensor_id=nodeSensor["sensor_id"], time=nowDate, value=sensorValue)
+			controller.do_create_sensor_data(rawSensorData)
