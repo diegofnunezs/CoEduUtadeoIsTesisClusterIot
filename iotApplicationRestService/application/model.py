@@ -23,6 +23,7 @@ class RawSensorData(db.Model):
     sensor_id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     value = db.Column(db.Integer)
+    migrated = db.Column(db.Boolean)
 
 class NetworkMetadataSchema(ma.ModelSchema):
     class Meta:
