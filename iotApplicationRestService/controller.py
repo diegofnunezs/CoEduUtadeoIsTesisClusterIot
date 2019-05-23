@@ -19,6 +19,12 @@ def get_node_sensors(node_id):
 	data = nodeSensorSchema.dump(nodeSensor).data
 	return data
 
+def get_node_sensor_data():
+	rawSensorData = _model.RawSensorData.query.all()
+	rawSensorDataSchema = _model.RawSensorDataSchema(many=True)
+	data = rawSensorDataSchema.dump(rawSensorData).data
+	return data
+
 def do_create_sensor_data(rawSensorData):
     db.session.add(rawSensorData)
     db.session.commit()
