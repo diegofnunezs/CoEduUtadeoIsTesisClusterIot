@@ -3,4 +3,5 @@
 **/include
 **/lib
 **/share
+*.db
 *.cfg
