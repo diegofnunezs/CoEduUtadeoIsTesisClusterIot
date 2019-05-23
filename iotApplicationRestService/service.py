@@ -7,7 +7,7 @@ def do_read_temperature(node_pin):
 	if temperature is not None:
 		return '{0:0.1f}'.format(temperature)
 	else:
-		return None
+		return 0
 
 def do_read_humidity(node_pin):
 	sensor=Adafruit_DHT.DHT11
@@ -16,7 +16,7 @@ def do_read_humidity(node_pin):
 	if humidity is not None:
 		return '{0:0.1f}'.format(humidity)
 	else:
-		return None
+		return 0
 
 def do_read_movement(node_pin):
 	GPIO.setwarnings(False)
@@ -25,12 +25,12 @@ def do_read_movement(node_pin):
 	if GPIO.input(node_pin) == 1:
 		return 1
 	else:
-		return None
+		return 0
 
 def do_read_light(node_pin):
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setup(node_pin, GPIO.IN)
 	if GPIO.input(node_pin) == 1:
-		return None
+		return 0
 	else:
 		return 1
