@@ -3,4 +3,7 @@
 **/include
 **/lib
 **/share
+**/.metadata
+**/RemoteSystemsTempFiles
+*.db
 *.cfg
