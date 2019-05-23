@@ -1,4 +1,3 @@
-
 import os
 import connexion
 from flask_sqlalchemy import SQLAlchemy

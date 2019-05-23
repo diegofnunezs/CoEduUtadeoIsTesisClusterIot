@@ -26,5 +26,5 @@ def get_node_sensor_data():
 	return data
 
 def do_create_sensor_data(rawSensorData):
-    db.session.add(rawSensorData)
-    db.session.commit()
+	db.session.add(rawSensorData)
+	db.session.commit()
