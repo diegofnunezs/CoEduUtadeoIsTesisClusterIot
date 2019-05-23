@@ -19,9 +19,9 @@ def do_read_humidity(node_pin):
 		return None
 
 def do_read_movement(node_pin):
-    GPIO.setwarnings(False)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(node_pin, GPIO.IN)
+	GPIO.setwarnings(False)
+	GPIO.setmode(GPIO.BCM)
+	GPIO.setup(node_pin, GPIO.IN)
 	if GPIO.input(node_pin) == 1:
 		return 1
 	else:

@@ -1,17 +1,12 @@
 from flask import render_template
-import connexion
+import config
 
-#Application instance
-app = connexion.App(__name__, specification_dir="./")
+# Get the application instance
+connex_app = config.connex_app
 
 #Read file swagger
-app.add_api('swagger.yml')
-
-#URL route for "/"
-@app.route('/')
-def home():
-    return render_template('home.htm')
+connex_app.add_api("swagger.yml")
 
 #Run in stand alone mode
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    connex_app.run(host='0.0.0.0', port=5000, debug=False)
