@@ -5,5 +5,10 @@
 **/share
 **/.metadata
 **/RemoteSystemsTempFiles
+**/target
+**/.settings
+**/.recommenders
 *.db
 *.cfg
+*.classpath
+*.project
