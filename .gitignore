@@ -5,5 +5,11 @@
 **/share
 **/.metadata
 **/RemoteSystemsTempFiles
+**/target
+**/.settings
+**/.recommenders
 *.db
+!iot_central_cluster.db
 *.cfg
+*.classpath
+*.project
