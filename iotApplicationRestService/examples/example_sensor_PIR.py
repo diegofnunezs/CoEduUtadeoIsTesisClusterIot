@@ -1,27 +1,18 @@
 import RPi.GPIO as GPIO
 import time
 
-PIR = 23
-ismoving = False
-mov = 0
-
-GPIO.setwarnings(False)
+node_pin = 23
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(PIR, GPIO.IN)
+GPIO.setup(node_pin, GPIO.IN)
 
-for x in range(0, 25):
-        ismoving = False
-        print ("We're on time" + str(x))
-        if GPIO.input(PIR):
-                ismoving = True
-                print("Motion detected "+str(ismoving))
-                time.sleep(1)
-                mov = mov + 1
-                break ##Rompe el for 
-        else:
-                print("No motion detected "+str(ismoving))
-                time.sleep(1)
+def do_read_movement():
+	for x in range(0, 5):
+		if GPIO.input(node_pin):
+			return 1
+		else:
+                        time.sleep(1)
+	return 0
 
-print ("Veces que se marca en "+ str(x) + "iteraciones" + str(mov))
-
-
+if __name__ == '__main__':
+	x=do_read_movement()
+	print(x)

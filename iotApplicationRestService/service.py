@@ -1,4 +1,5 @@
 import Adafruit_DHT, RPi.GPIO as GPIO
+import time
 
 def do_read_temperature(node_pin):
 	sensor=Adafruit_DHT.DHT11
@@ -22,10 +23,13 @@ def do_read_movement(node_pin):
 	GPIO.setwarnings(False)
 	GPIO.setmode(GPIO.BCM)
 	GPIO.setup(node_pin, GPIO.IN)
-	if GPIO.input(node_pin) == 1:
-		return 1
-	else:
-		return 0
+	for x in range(0, 60):
+		if GPIO.input(node_pin):
+			time.sleep(1)
+			return 1
+		else:
+			time.sleep(1)
+	return 0
 
 def do_read_light(node_pin):
 	GPIO.setmode(GPIO.BCM)
