@@ -7,7 +7,7 @@ INSERT INTO sensor_metadata (sensor_id, description) VALUES (2, 'Temperature');
 INSERT INTO sensor_metadata (sensor_id, description) VALUES (3, 'Humidity');
 INSERT INTO sensor_metadata (sensor_id, description) VALUES (4, 'Light');
 
-INSERT INTO node_sensor (node_id, sensor_id, node_pin, data_position) VALUES (1, 1, 4, null);
+INSERT INTO node_sensor (node_id, sensor_id, node_pin, data_position) VALUES (1, 1, 23, null);
 INSERT INTO node_sensor (node_id, sensor_id, node_pin, data_position) VALUES (1, 2, 17, 1);
 INSERT INTO node_sensor (node_id, sensor_id, node_pin, data_position) VALUES (1, 3, 17, 0);
-INSERT INTO node_sensor (node_id, sensor_id, node_pin, data_position) VALUES (1, 4, 14, null);
+INSERT INTO node_sensor (node_id, sensor_id, node_pin, data_position) VALUES (1, 4, 4, null);
