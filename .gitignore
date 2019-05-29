@@ -10,6 +10,7 @@
 **/.recommenders
 *.db
 !iot_central_cluster.db
+!iot_cluster_*.db
 *.cfg
 *.classpath
 *.project
