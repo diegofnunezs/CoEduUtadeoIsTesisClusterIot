@@ -5,4 +5,4 @@ climate_view.temperature as Temperature, climate_view.Humidity as Humidity,
 security_view.Light as Light, security_view.Movement as Movement
 from climate_view, security_view
 where climate_view.Node = security_view.Node
-group by climate_view.Time
+group by climate_view.Time;
