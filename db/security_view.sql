@@ -1,6 +1,8 @@
 drop view security_view;
 create view security_view as
-select movement_view.Node as Node, movement_view.Time as Time, movement_view.Location as Location, movement_view.Movement as Movement, light_view.Light as Light
-from movement_view, light_view
-where movement_view.Node = movement_view.Node
-group by movement_view.Time;
+select movement_view.Location as Location, strftime('%Y-%m-%d %H:00:00',movement_view.Time) as Time, 
+max(movement_view.Movement) as Movement, max(light_view.Light) as Light
+from movement_view left join light_view on
+movement_view.Node = light_view.Node and
+strftime('%Y-%m-%d %H:00:00',movement_view.Time) = strftime('%Y-%m-%d %H:00:00',light_view.Time)
+group by movement_view.location, strftime('%Y-%m-%d %H:00:00',movement_view.Time)
